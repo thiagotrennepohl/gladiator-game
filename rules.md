@@ -66,3 +66,7 @@ Ao fim de cada batalha em que o jogador for vitorioso, o jogador poderá atribui
 
 - Adicionar armadilhas
 - Jogo online
+
+# ENGLISH - Medieval Battle
+
+...
