@@ -14,7 +14,7 @@ type FightStyle interface {
 	CalculateAttackPoints(playerAtributes, opponentAtribute *BaseAtributes) float32
 	CalculateDefensePoints(atributes *BaseAtributes) float32
 	HasEvaded(atributes *BaseAtributes) bool
-	CalculateCriticalChance(atributes *BaseAtributes) int
+	CalculateCriticalChance(atributes *BaseAtributes) float32
 	HasFled(atributes *BaseAtributes) bool
 }
 
@@ -36,6 +36,20 @@ func (w *Warrior) CalculateAttackPoints(playerAtribute, opponentAtribute *BaseAt
 }
 func (w *Warrior) CalculateDefensePoints(atribute *BaseAtributes) float32 {
 	return float32(atribute.Stamina / 8)
+}
+
+func (w *Warrior) HasEvaded(atributes *BaseAtributes) bool {
+	//não faço ideia
+	return true
+}
+
+func (w *Warrior) CalculateCriticalChance(atributes *BaseAtributes) float32 {
+	//não faço ideia
+	return 1
+}
+
+func (w *Warrior) HasFled(atributes *BaseAtributes) bool {
+	return true
 }
 
 type Item interface {
