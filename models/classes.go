@@ -40,6 +40,30 @@ func (w *Warrior) CalculateDefensePoints(atribute *BaseAtributes) float32 {
 	return float32(atribute.Stamina / 8)
 }
 
+type Mage struct {
+}
+
+func (m *Mage) CalculateAttackPoints(playerAtribute, opponentAtribute *BaseAtributes) float32 {
+	ataque := playerAtribute.Strength/10 - opponentAtribute.Stamina/8
+	return float32(ataque)
+}
+func (m *Mage) CalculateDefensePoints(atribute *BaseAtributes) float32 {
+	return float32(atribute.Stamina / 8)
+}
+
+func (m *Mage) CalculateCriticalChance(atributes *BaseAtributes) float32 {
+	//TO DO: calculo
+	return 12
+}
+
+func (m *Mage) HasEvaded(atributes *BaseAtributes) bool {
+	//TO DO: calculo
+	return true
+}
+
+func (m *Mage) HasFled(atributes *BaseAtributes) bool {
+	//TO DO: calculo
+
 func (w *Warrior) HasEvaded(atributes *BaseAtributes) bool {
 	//não faço ideia
 	return true
