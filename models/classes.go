@@ -14,7 +14,7 @@ type FightStyle interface {
 	CalculateAttackPoints(playerAtributes, opponentAtribute *BaseAtributes) float32
 	CalculateDefensePoints(atributes *BaseAtributes) float32
 	HasEvaded(atributes *BaseAtributes) bool
-	CalculateCriticalChance(atributes *BaseAtributes) int
+	CalculateCriticalChance(atributes *BaseAtributes) float32
 	HasFled(atributes *BaseAtributes) bool
 }
 
@@ -30,12 +30,33 @@ type BaseAtributes struct {
 type Warrior struct {
 }
 
+type Archer struct {
+}
+
 func (w *Warrior) CalculateAttackPoints(playerAtribute, opponentAtribute *BaseAtributes) float32 {
-	ataque := playerAtribute.Strength/10 - opponentAtribute.Stamina/8
-	return float32(ataque)
+	return float32(playerAtribute.Strength/10 - opponentAtribute.Stamina/8)
 }
 func (w *Warrior) CalculateDefensePoints(atribute *BaseAtributes) float32 {
 	return float32(atribute.Stamina / 8)
+}
+
+func (a *Archer) CalculateAttackPoints(playerAtribute, opponentAtribute *BaseAtributes) float32 {
+	return float32(playerAtribute.Dextery/10 - opponentAtribute.Stamina/8)
+}
+
+func (a *Archer) CalculateDefensePoints(atribute *BaseAtributes) float32 {
+	return float32(atribute.Stamina / 8)
+}
+func (a *Archer) HasEvaded(atribute *BaseAtributes) bool {
+	return true //float32(atribute.Dextery / 7)
+}
+
+func (a *Archer) CalculateCriticalChance(atribute *BaseAtributes) float32 {
+	return float32(atribute.Luck / 6)
+}
+
+func (a *Archer) HasFled(atribute *BaseAtributes) bool {
+	return true
 }
 
 type Item interface {
