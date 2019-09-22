@@ -1,99 +1,12 @@
 package models
 
-//Character represents a player
-type Character struct {
-	Name          string
-	Gender        string
-	BaseAtributes BaseAtributes
-	FightStyle    FightStyle
-	//Inventory     []Item
-}
-
-//FightStyle represents the base contract of a new class
-type FightStyle interface {
-	CalculateAttackPoints(playerAtributes, opponentAtribute *BaseAtributes) float32
-	CalculateDefensePoints(atributes *BaseAtributes) float32
-	HasEvaded(atributes *BaseAtributes) bool
-	CalculateCriticalChance(atributes *BaseAtributes) float32
-	HasFled(atributes *BaseAtributes) bool
-}
-
 //BaseAtributes represents basic character atributes set up
-type BaseAtributes struct {
+type BaseAttributes struct {
 	Strength     int
 	Stamina      int
 	Dextery      int
 	Intelligence int
 	Luck         int
-}
-
-type Warrior struct {
-}
-
-type Archer struct {
-}
-
-func (w *Warrior) CalculateAttackPoints(playerAtribute, opponentAtribute *BaseAtributes) float32 {
-	return float32(playerAtribute.Strength/10 - opponentAtribute.Stamina/8)
-}
-func (w *Warrior) CalculateDefensePoints(atribute *BaseAtributes) float32 {
-	return float32(atribute.Stamina / 8)
-}
-
-type Mage struct {
-}
-
-func (m *Mage) CalculateAttackPoints(playerAtribute, opponentAtribute *BaseAtributes) float32 {
-	ataque := playerAtribute.Strength/10 - opponentAtribute.Stamina/8
-	return float32(ataque)
-}
-func (m *Mage) CalculateDefensePoints(atribute *BaseAtributes) float32 {
-	return float32(atribute.Stamina / 8)
-}
-
-func (m *Mage) CalculateCriticalChance(atributes *BaseAtributes) float32 {
-	//TO DO: calculo
-	return 12
-}
-
-func (m *Mage) HasEvaded(atributes *BaseAtributes) bool {
-	//TO DO: calculo
-	return true
-}
-
-func (m *Mage) HasFled(atributes *BaseAtributes) bool {
-	//TO DO: calculo
-
-func (w *Warrior) HasEvaded(atributes *BaseAtributes) bool {
-	//não faço ideia
-	return true
-}
-
-func (w *Warrior) CalculateCriticalChance(atributes *BaseAtributes) float32 {
-	//não faço ideia
-	return 1
-}
-
-func (w *Warrior) HasFled(atributes *BaseAtributes) bool {
-
-func (a *Archer) CalculateAttackPoints(playerAtribute, opponentAtribute *BaseAtributes) float32 {
-	return float32(playerAtribute.Dextery/10 - opponentAtribute.Stamina/8)
-}
-
-func (a *Archer) CalculateDefensePoints(atribute *BaseAtributes) float32 {
-	return float32(atribute.Stamina / 8)
-}
-func (a *Archer) HasEvaded(atribute *BaseAtributes) bool {
-	return true //float32(atribute.Dextery / 7)
-}
-
-func (a *Archer) CalculateCriticalChance(atribute *BaseAtributes) float32 {
-	return float32(atribute.Luck / 6)
-}
-
-func (a *Archer) HasFled(atribute *BaseAtributes) bool {
-
-	return true
 }
 
 type Item interface {
