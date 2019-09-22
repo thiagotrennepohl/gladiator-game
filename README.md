@@ -1,34 +1,25 @@
-# Batalha medieval
+# Gladiator game
 
-Crie um jogo baseado em turnos onde o jogador fará uma aventura medieval.
-
-## Início do jogo
-
-O jogo se dará em 5 turnos, no estilo arena. O jogador deverá iniciar o jogo informando o nome, classe e gênero do personagem e poderá distribuir 5 pontos de atributos entre: força, agilidade, stamina, magia e sorte.
+This is a turn based gladiator style game
 
 ## Classes
+Currently the game has 3 classes
 
-O jogo inicialmente contará com 3 classes:
+- Mage
+- Warrior
+- Archer
 
-- Mago
-- Guerreiro
-- Arqueiro
+## Attribute points
 
-## Atributos
+Before the game begins (at the character creation screen) you'll be able to set 5 attribute points in any of the following attributes:
 
-Todos os personagens possuem os mesmos atributos:
-
-- Força
-  - Este atributo influencia no poder de ataques físicos de curta distância.
-- Agilidade
-  - Este atributo influencia no poder de ataques físicos de longa distância.
+- Strenght
+- Dextery
 - Stamina
-  - Este atributo influencia na defesa física do jogador
-- Magia
-  - Este atributo influencia no poder de ataques mágicos e defesa mágica.
-- Sorte
-  - Este atributo influencia nas chances de fuga e danos críticos
-  - Cada ponto em sorte aumenta em 5% as chances de fugas e danos críticos.
+- Intelligence
+- Luck
+
+Whenever you level up you'll gain 2 more point to add to your attributes.
 
 ## Atributos de batalha
 

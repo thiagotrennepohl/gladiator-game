@@ -13,7 +13,6 @@ func NewWarriorService(attributes models.BaseAttributes) warriorService {
 		baseAttributes: attributes,
 	}
 }
-3
 func (warriorSvc *warriorService) GetAttackPoints() float32 {
 	return float32(warriorSvc.baseAttributes.Strength)
 }
@@ -41,6 +40,10 @@ func (warriorSvc *warriorService) SetName(name string) {
 	warriorSvc.name = name
 }
 
-func (warriorSvc *warriorService)CreateRandomCharacter() warriorService {
-	return &warriorService{}
+func (warriorSvc *warriorService) SetBaseAttributes(attr models.BaseAttributes) {
+	warriorSvc.baseAttributes = attr
+}
+
+func (warriorSvc *warriorService) GetBaseAttributes() models.BaseAttributes {
+	return warriorSvc.baseAttributes
 }

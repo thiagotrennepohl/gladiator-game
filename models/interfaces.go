@@ -10,10 +10,10 @@ type Character interface {
 	GetEvasionRate() float32
 	GetCriticalChance() float32
 	SetName(string)
-	SetAttackPoints(float32)
-	CreateRandomCharacter() Character
+	SetBaseAttributes(BaseAttributes)
+	GetBaseAttributes() BaseAttributes
 }
 
 type OpponentService interface {
-	CreateNewOpponent(fightStyles []Character, playerLevel int) Character
+	CreateNewOpponent(classes map[string]Character, rules map[string]BaseAttributes) Character
 }
