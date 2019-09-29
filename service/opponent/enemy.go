@@ -13,7 +13,7 @@ type opponentService struct {
 
 //NewOpponentService creates a new implementation of the OpponentService interface
 func NewOpponentService(classes map[string]models.Character, classesRules map[string]models.BaseAttributes) models.OpponentService {
-	return opponentService{
+	return &opponentService{
 		classes:      classes,
 		classesRules: classesRules,
 	}

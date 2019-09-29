@@ -14,21 +14,22 @@ func NewWarriorService(attributes models.BaseAttributes) warriorService {
 	}
 }
 func (warriorSvc *warriorService) GetAttackPoints() float32 {
-	return float32(warriorSvc.baseAttributes.Strength)
+	return float32(warriorSvc.baseAttributes.Strength)*0.4 + float32(warriorSvc.baseAttributes.Strength)
 }
 
 func (warriorSvc *warriorService) GetDefensePoints() float32 {
-	return float32(warriorSvc.baseAttributes.Stamina * 2)
+	return float32(warriorSvc.baseAttributes.Stamina) * 0.2 * warriorSvc.baseAttributes.Stamina
 }
 
 func (warriorSvc *warriorService) GetName() string {
 	return warriorSvc.name
 }
 
-func (warriorSvc *warriorService) GetEvasionRate() float32 {
-	//Create rule for evasion rate based on luck and dextery
-	return float32(warriorSvc.baseAttributes.Dextery)
-}
+//Disabled for now, because we need also add accuracy rate
+//func (warriorSvc *warriorService) GetEvasionRate() float32 {
+//Create rule for evasion rate based on luck and dextery
+//	return float32(warriorSvc.baseAttributes.Dextery) * 0.
+//}
 
 func (warriorSvc *warriorService) GetCriticalChance() float32 {
 	//Create rule for criticalChance rate based on luck and dextery
