@@ -52,6 +52,7 @@ func (o *opponentService) setAttributes(className string, playerLevel int) (mode
 			Dextery:      float32(basePoints)*rules.Dextery + 5,
 			Intelligence: float32(basePoints)*rules.Intelligence + 5,
 			Luck:         float32(basePoints)*rules.Luck + 5,
+			HP:           float32(basePoints)*rules.Stamina + 100,
 		}, nil
 	}
 	return models.BaseAttributes{}, fmt.Errorf("Class %s not found in the rules list", className)

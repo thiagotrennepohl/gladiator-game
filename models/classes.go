@@ -7,6 +7,7 @@ type BaseAttributes struct {
 	Dextery      float32
 	Intelligence float32
 	Luck         float32
+	HP           float32
 }
 
 type WarriorRules BaseAttributes

@@ -1,24 +1,27 @@
 package warrior
 
-import "github.com/thiagotrennepohl/gladiator-game/models"
+import (
+	"github.com/thiagotrennepohl/gladiator-game/models"
+)
 
 type warriorService struct {
 	name           string
 	baseAttributes models.BaseAttributes
+	statsModifier  models.BaseAttributes
 }
 
 //NewWarriorService creates a new warrior
-func NewWarriorService(attributes models.BaseAttributes) warriorService {
-	return warriorService{
-		baseAttributes: attributes,
+func NewWarriorService(attributesRules models.BaseAttributes) models.Character {
+	return &warriorService{
+		statsModifier: attributesRules,
 	}
 }
 func (warriorSvc *warriorService) GetAttackPoints() float32 {
-	return float32(warriorSvc.baseAttributes.Strength)*0.4 + float32(warriorSvc.baseAttributes.Strength)
+	return warriorSvc.baseAttributes.Strength*warriorSvc.statsModifier.Strength + 10
 }
 
 func (warriorSvc *warriorService) GetDefensePoints() float32 {
-	return float32(warriorSvc.baseAttributes.Stamina) * 0.2 * warriorSvc.baseAttributes.Stamina
+	return warriorSvc.baseAttributes.Stamina*warriorSvc.statsModifier.Stamina + 10
 }
 
 func (warriorSvc *warriorService) GetName() string {
@@ -47,4 +50,12 @@ func (warriorSvc *warriorService) SetBaseAttributes(attr models.BaseAttributes) 
 
 func (warriorSvc *warriorService) GetBaseAttributes() models.BaseAttributes {
 	return warriorSvc.baseAttributes
+}
+
+func (warriorSvc *warriorService) GetHealthPoints() float32 {
+	return warriorSvc.baseAttributes.HP
+}
+
+func (warriorSvc *warriorService) DecreaseFromHealthPoints(dmg float32) {
+	warriorSvc.baseAttributes.HP -= dmg
 }

@@ -9,6 +9,8 @@ type Character interface {
 	SetName(string)
 	SetBaseAttributes(BaseAttributes)
 	GetBaseAttributes() BaseAttributes
+	GetHealthPoints() float32
+	DecreaseFromHealthPoints(float32)
 }
 
 type OpponentService interface {
