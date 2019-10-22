@@ -50,26 +50,29 @@ var (
 func InitStuff() {
 	position = rl.NewVector2(100.0, 325)
 	enemyPosition = rl.NewVector2(700, 325)
-	characterTexture = rl.LoadTexture("assets/img/run.png")
+	characterTexture = rl.LoadTexture("assets/img/idle.png")
 	bg = rl.LoadTexture("assets/img/back.png")
 	sky = rl.LoadTexture("assets/img/sky.png")
 	enemy = rl.LoadTexture("assets/img/enemy2.png")
-	frameRec = rl.NewRectangle(0, 0, float32(characterTexture.Width/7), float32(characterTexture.Height))
+	frameRec = rl.NewRectangle(0, 0, float32(characterTexture.Width/5), float32(characterTexture.Height))
 	enemyRectangle = rl.NewRectangle(0, 0, float32(enemy.Width/7), float32(enemy.Height))
 }
 
 func Start(player models.Character, opponentSvc models.OpponentService) {
-	//We need to fetch the player level.
-	if enemyPlayer == nil {
-		enemyPlayer, _ = opponentSvc.CreateNewOpponent(2)
-	}
 	showBackground()
+	//Checks if the enemy has already been created
+	if enemyPlayer == nil {
+		//Leveling system not ready yet.
+		// enemyPlayer, _ = opponentSvc.CreateNewOpponent(player.GetLevel())
+		enemyPlayer, _ = opponentSvc.CreateNewOpponent(1)
+	}
 	drawPlayer()
 	drawEnemy()
+	// if match.IsInProgress() {
+	// 	 := match.TossCoin()
+	// }
 
 	if startBattle {
-		rl.DrawText(fmt.Sprintf("PLAYER STATS: %v+", player.GetBaseAttributes()), 100, 60, 10, rl.Black)
-		rl.DrawText(fmt.Sprintf("ENEMY STATS: %v+", enemyPlayer.GetBaseAttributes()), 400, 60, 10, rl.Black)
 		rl.DrawText(fmt.Sprintf("PLAYER HP: %.3g", player.GetHealthPoints()), 100, 120, 20, rl.Black)
 		rl.DrawText(fmt.Sprintf("ENEMY HP: %.3g", enemyPlayer.GetHealthPoints()), 600, 120, 20, rl.Black)
 		if playerTurn {
@@ -102,6 +105,17 @@ func showBackground() {
 }
 
 func drawPlayer() {
+	framesCounter++
+	if framesCounter >= (60 / framesSpeed) {
+		framesCounter = 0
+		currentFrame++
+		if currentFrame > 4 {
+			currentFrame = 0
+		}
+
+		frameRec.X = currentFrame * float32(characterTexture.Width) / 5
+
+	}
 	rl.DrawTextureRec(characterTexture, frameRec, position, rl.White) // Draw part of the texture
 }
 

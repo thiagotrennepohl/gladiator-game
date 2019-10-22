@@ -11,6 +11,7 @@ type Character interface {
 	GetBaseAttributes() BaseAttributes
 	GetHealthPoints() float32
 	DecreaseFromHealthPoints(float32)
+	GetLevel() int
 }
 
 type OpponentService interface {
@@ -26,4 +27,8 @@ type MatchService interface {
 type CharacterCreationService interface {
 	CreateCharacter(name string, class string, attributes BaseAttributes) Character
 	GetAvailableClasses() (map[string]Character, error)
+}
+
+type Command interface {
+	Execute()
 }

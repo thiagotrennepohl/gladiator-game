@@ -8,6 +8,7 @@ type BaseAttributes struct {
 	Intelligence float32
 	Luck         float32
 	HP           float32
+	Level        int
 }
 
 type WarriorRules BaseAttributes

@@ -59,3 +59,7 @@ func (warriorSvc *warriorService) GetHealthPoints() float32 {
 func (warriorSvc *warriorService) DecreaseFromHealthPoints(dmg float32) {
 	warriorSvc.baseAttributes.HP -= dmg
 }
+
+func (warriorSvc *warriorService) GetLevel() int {
+	return warriorSvc.baseAttributes.Level
+}
